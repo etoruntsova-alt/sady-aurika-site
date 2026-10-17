@@ -2422,3 +2422,20 @@ html { font-size: 120%; }
 @media (max-width: 899px) { #экран-1 .первый-экран__действие { margin: 0 0 .5rem !important; } #экран-1 h1 { margin-bottom: .2em !important; } }
 #экран-1 .лид { display: none !important; }
 /* 13.10: подзаголовок первого экрана убран на всех размерах (решение заказчицы) */
+
+/* --- первый экран: видео в арке --- */
+.блок.первый-экран--разворот .первый-экран__картинка.картинка--арка video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
+
+/* --- первый экран: кнопка музыки в арке --- */
+.звук-арки { position: absolute; z-index: 3; left: 50%; bottom: 1.1rem; translate: -50% 0; display: inline-flex; align-items: center; gap: .5rem;
+  min-height: 44px; padding: .5rem 1rem .5rem .8rem; border: 0; border-radius: 999px; cursor: pointer; font: inherit; font-weight: 600; font-size: .9rem;
+  color: #fff; background: rgba(40, 24, 12, .66); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: 0 2px 10px rgba(0,0,0,.3); }
+.звук-арки:hover, .звук-арки:focus-visible { background: rgba(40, 24, 12, .82); }
+.звук-арки:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.звук-арки .звук-арки__волны { display: none; }
+.звук-арки--вкл .звук-арки__волны { display: inline; }
+.звук-арки--вкл .звук-арки__крест { display: none; }
+.звук-арки { white-space: nowrap; }
+.звук-арки svg { flex: none; }
+/* кнопка звука: только значок, правый нижний угол арки */
+.звук-арки { left: auto; right: 1rem; bottom: 1rem; translate: none; width: 48px; height: 48px; min-height: 0; padding: 0; justify-content: center; gap: 0; }

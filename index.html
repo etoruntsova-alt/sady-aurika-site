@@ -121,7 +121,7 @@
       <div class="первый-экран__действие"><a class="кнопка кнопка--главная" href="https://vk.me/po_gardens_of_aurica">Экскурсии: выбрать дату и время</a></div>
     </div>
     <figure class="картинка картинка--фото картинка--арка первый-экран__картинка" style="--лицо-в-кадре: .22">
-      <picture><source media="(max-width: 899px)" srcset="img/00-pech.webp"><img src="img/00-pech.webp" alt="Печь с керамикой: из глины и огня красота — в ваш дом и сад" data-лицо="50,22" fetchpriority="high"></picture>
+      <video src="img/arka-video.mp4" poster="img/arka-video-poster.webp" autoplay muted loop playsinline preload="auto" aria-label="Мастера гончарного производства за работой: лепка, роспись и сушка изделий"></video><button type="button" class="звук-арки" aria-pressed="false" aria-label="Включить музыку"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><g class="звук-арки__волны"><path d="M16 8.5a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g><path class="звук-арки__крест" d="M16 9l5 6m0-6l-5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     </figure>
     <div class="двери"><a class="дверь" href="#экран-05"><b>О нас / события</b><span>мастера, парк печей, сад скульптур</span></a><a class="дверь" href="#экран-02"><b>Экскурсии и мастер-классы</b><span>в удобные вам дату и время, с мастер-классом или без</span></a><a class="дверь" href="https://садыаурики.рф"><b>Магазин и опт</b><span>переход на отдельный сайт магазина</span></a></div>
   </div>
@@ -527,5 +527,24 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   window.addEventListener('load', fit); window.addEventListener('resize', fit); fit();
 })();
-</script></body>
+</script><script>
+(function () {
+  var в = document.querySelector(".первый-экран__картинка video"), к = document.querySelector(".звук-арки");
+  if (!в || !к) { return; }
+  function состояние(звук) {
+    к.setAttribute("aria-pressed", звук ? "true" : "false");
+    к.setAttribute("aria-label", звук ? "Выключить музыку" : "Включить музыку");
+    
+    к.classList.toggle("звук-арки--вкл", звук);
+  }
+  function тихо() { в.muted = true; состояние(false); }
+  к.addEventListener("click", function () {
+    if (!в.muted) { тихо(); return; }
+    в.muted = false; состояние(true);
+    var р = в.play(); if (р && р.catch) { р.catch(тихо); }
+  });
+  document.addEventListener("visibilitychange", function () { if (document.hidden && !в.muted) { тихо(); } });
+})();
+</script>
+</body>
 </html>
