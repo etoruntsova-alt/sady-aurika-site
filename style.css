@@ -2439,3 +2439,6 @@ html { font-size: 120%; }
 .звук-арки svg { flex: none; }
 /* кнопка звука: только значок, правый нижний угол арки */
 .звук-арки { left: auto; right: 1rem; bottom: 1rem; translate: none; width: 48px; height: 48px; min-height: 0; padding: 0; justify-content: center; gap: 0; }
+
+/* Правки логотипа: пропорции эмблемы не меняются ни на каком экране (высота задана, ширина считается по картинке) */
+.шапка__лого img.шапка__эмблема { width: auto !important; max-width: none !important; min-width: 0; object-fit: contain !important; flex: none !important; }
